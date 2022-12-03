@@ -9,11 +9,12 @@ x1_normalized = x1_values ./ norms;
 x2_normalized = x2_values ./norms;
 
 # Pas d'isoclines, double division par zéro
+line_range = -1.5:.1:1.5;
 
 # Droites invariantes (vecteurs propres) 
 [V,L] = eig(A);
-eigenvector_1 = (V(2,1)/V(1,1)) * line_range;
 eigenvector_2 = (V(2,2)/V(1,2)) * line_range;
+# Le 2ième vecteur propre lève une erreur (division par zéro)
 
 # Figure 1: portrait de phase, isoclines et vecteurs propres
 figure(1);
@@ -22,11 +23,11 @@ vector_scale = .5;
 
 quiver(x1,x2,x1_normalized,x2_normalized, vector_scale);
 
-plot(line_range,eigenvector_1,"linewidth",3);
 plot(line_range,eigenvector_2,"linewidth",3);
+#problem de fleche
 quiver([0;0],[0;0],V(1,:),V(2,:),"linewidth",3,"color","k");
 
-legend("portrait de phase", "v_1","v_2","location","south");
+legend("portrait de phase","v_2","location","south");
 hold off;
 
 # Figure 2: trajectoires e(t), w(t) avec 5 conditions initiales
