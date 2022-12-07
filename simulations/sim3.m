@@ -58,4 +58,11 @@ plot(t3,x3);
 plot(t4,x4);
 plot(t5,x5);
 
+legend(
+ "e(t) CI: [2,0]","w(t) CI: [2,0]",
+ "e(t) CI: [0,3]","w(t) CI: [0,3]",
+ "e(t) CI: [-2,3]","w(t) CI: [-2,3]",
+ "e(t) CI: [2,-3]","w(t) CI: [2,-3]",
+ "e(t) CI: [2,2]","w(t) CI: [2,2]",
+ "location","northwest");
 hold off;
