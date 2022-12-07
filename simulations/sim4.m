@@ -24,8 +24,8 @@ vector_scale = .5;
 quiver(x1,x2,x1_normalized,x2_normalized, vector_scale);
 
 plot(line_range,eigenvector_2,"linewidth",3);
-#problem de fleche
-quiver([0;0],[0;0],V(1,:),V(2,:),"linewidth",3,"color","k");
+
+quiver([0,0],[0,0],V(1,2),V(2,2),"linewidth",3,"color","k");
 
 legend("portrait de phase","v_2","location","south");
 hold off;

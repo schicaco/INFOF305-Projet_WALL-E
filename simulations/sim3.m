@@ -1,8 +1,6 @@
 #A = [2 3; -3 -2]; #centre
 A = [3 2; -2 -3]; #selle
 
-#TODO: vérifier si isoclines de graph avec nbrs complexes est bon 
-
 [x1,x2] = meshgrid(-1.5:0.1:1.5);
 
 x1_values = A(1,1)*x1+A(1,2)*x2;
@@ -29,7 +27,7 @@ vector_scale = .5;
 
 quiver(x1,x2,x1_normalized,x2_normalized, vector_scale);
 
-# commenter isocline 1 et vecteur propre 1 pour le centre
+# Commenter isocline 1 et vecteur propre 1 pour le centre
 plot(line_range,isocline_1,"linewidth", 2, "linestyle", ":");
 plot(line_range,isocline_2,"linewidth", 2, "linestyle", ":");
 
