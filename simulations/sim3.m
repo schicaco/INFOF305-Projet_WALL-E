@@ -1,5 +1,5 @@
-#A = [2 3; -3 -2]; #centre
-A = [3 2; -2 -3]; #selle
+A = [2 3; -3 -2]; #centre
+#A = [3 2; -2 -3]; #selle
 
 [x1,x2] = meshgrid(-1.5:0.1:1.5);
 
@@ -27,13 +27,13 @@ vector_scale = .5;
 
 quiver(x1,x2,x1_normalized,x2_normalized, vector_scale);
 
-# Commenter isocline 1 et vecteur propre 1 pour le centre
+# Commenter vecteurs propres pour le centre
 plot(line_range,isocline_1,"linewidth", 2, "linestyle", ":");
 plot(line_range,isocline_2,"linewidth", 2, "linestyle", ":");
 
-plot(line_range,eigenvector_1,"linewidth",2);
-plot(line_range,eigenvector_2,"linewidth",2);
-quiver([0;0],[0;0],V(1,:),V(2,:),"linewidth",5,"color","k");
+#plot(line_range,eigenvector_1,"linewidth",2);
+#plot(line_range,eigenvector_2,"linewidth",2);
+#quiver([0;0],[0;0],V(1,:),V(2,:),"linewidth",5,"color","k");
 
 legend("portrait de phase","isocline 1","isocline 2", "v_1","v_2","location","south");
 hold off;
