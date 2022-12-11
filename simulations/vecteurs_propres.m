@@ -1,5 +1,5 @@
+hold on;
 function vecteurs_propres(A, intervalle)
-    hold on;
     # Chaque vecteur propre se trouve dans une ligne de la matrice V.
     [V,L] = eig(A);
     eigenvector_1 = (V(1,2)/V(1,1)) * intervalle;
@@ -19,7 +19,7 @@ function vecteurs_propres(A, intervalle)
     legend("v_1","v_2","location","south");
 endfunction
 
-A = [3, 2;2, 3];
+A = [2, 0;3, 0];
 line_range = -1.5:1.5; # On va plot de -1.5 jusqu'à 1.5
 vecteurs_propres(A, line_range);
 
