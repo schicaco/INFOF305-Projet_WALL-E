@@ -1,15 +1,20 @@
+#CHICA COBO Sofia 518664 - PHAM Dang Phi L. 482207
+
 figure(1)
 hold on ;
 function vecteurs_propres(A, intervalle)
     # Chaque vecteur propre se trouve dans une ligne de la matrice V.
     [V,L] = eig(A);
     eigenvector_1 = (V(1,2)/V(1,1)) * intervalle;
+    eigenvector_2 = (V(2,2)/V(2,1)) * intervalle;
     plot(intervalle, eigenvector_1,"linewidth",3);
+    plot(intervalle, eigenvector_2,"linewidth",3);
     if L(1, 1) > 0
         quiver(0, 0, V(1, 1), V(1, 2), "color", "k", "linewidth", 2);
     else
         quiver(V(1, 1), V(1, 2), -V(1, 1), -V(1, 2), "color", "k", "linewidth", 2);
     end
+    legend("v_1","v_2","location","south");
 endfunction
 
 function isoclines(A, intervalle)

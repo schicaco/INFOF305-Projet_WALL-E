@@ -1,3 +1,5 @@
+#CHICA COBO Sofia 518664 - PHAM Dang Phi L. 482207
+
 figure(1)
 hold on ;
 function vecteurs_propres(A, intervalle)
@@ -48,8 +50,8 @@ function vecteurs_vitesse(A, intervalle)
     quiver(x1,x2,x1_normalized,x2_normalized, vector_scale);
 endfunction
  
-#A = [3 2; 2 3]; #noeud instable 
-A = [2 3; 3 2]; #selle
+A = [3 2; 2 3]; #noeud instable 
+#A = [2 3; 3 2]; #selle
 
 line_range =-1.5:0.1:1.5; # On va plot de -1.5 jusqu'à 1.5
 

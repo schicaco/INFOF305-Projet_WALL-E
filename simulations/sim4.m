@@ -1,3 +1,5 @@
+#CHICA COBO Sofia 518664 - PHAM Dang Phi L. 482207
+
 figure(1)
 hold on ;
 function vecteurs_propres(A, intervalle)

@@ -1,3 +1,5 @@
+#CHICA COBO Sofia 518664 - PHAM Dang Phi L. 482207
+
 figure(1)
 hold on ;
 function vecteurs_propres(A, intervalle)
@@ -49,21 +51,21 @@ function vecteurs_vitesse(A, intervalle)
 endfunction
 
 #Selle: 
-##A = [3 2; -2 -3];  
-##line_range =-1.5:0.1:1.5; # On va plot de -1.5 jusqu'à 1.5
-##vecteurs_vitesse(A, line_range);
-##isoclines(A, line_range);
-##vecteurs_propres(A, line_range);
-##legend("portrait de phase", "isocline_1", "isocline_2", "v1", "v2"); 
-##hold off; # Montrer l'image
-
-#centre
-A = [2 3; -3 -2]; 
+A = [3 2; -2 -3];  
 line_range =-1.5:0.1:1.5; # On va plot de -1.5 jusqu'à 1.5
 vecteurs_vitesse(A, line_range);
 isoclines(A, line_range);
-legend("portrait de phase", "isocline_1", "isocline_2");
+vecteurs_propres(A, line_range);
+legend("portrait de phase", "isocline_1", "isocline_2", "v1", "v2"); 
 hold off; # Montrer l'image
+
+#centre
+##A = [2 3; -3 -2]; 
+##line_range =-1.5:0.1:1.5; # On va plot de -1.5 jusqu'à 1.5
+##vecteurs_vitesse(A, line_range);
+##isoclines(A, line_range);
+##legend("portrait de phase", "isocline_1", "isocline_2");
+##hold off; # Montrer l'image
 
 # Figure 2: trajectoires e(t), w(t) avec 5 conditions initiales
 figure(2);
