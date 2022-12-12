@@ -47,17 +47,23 @@ function vecteurs_vitesse(A, intervalle)
     vector_scale = .5;
     quiver(x1,x2,x1_normalized,x2_normalized, vector_scale);
 endfunction
- 
+
+#A = [2 3;0 0]; #système 1 
+#Système 2: 
 #A = [3 2; 2 3]; #noeud instable 
-A = [2 3; 3 2]; #selle
+#A = [2 3; 3 2]; #selle
+
+#Système 3: 
+A = [2 3; -3 -2]; #centre
+#A = [3 2; -2 -3]; #selle 
+
+#A = [2 3;0 0]; #Système 4
 
 line_range =-1.5:0.1:1.5; # On va plot de -1.5 jusqu'à 1.5
 
 vecteurs_vitesse(A, line_range)
-isoclines(A, line_range);
 vecteurs_propres(A, line_range);
-
-legend("portrait de phase","isocline_1","isocline_2", "v1", "v2")
+isoclines(A, line_range);
 hold off; # Montrer l'image
 
 # Figure 2: trajectoires e(t), w(t) avec 5 conditions initiales
@@ -79,10 +85,10 @@ plot(t4,x4);
 plot(t5,x5);
 
 legend(
- "w(t) CI: [2,0]","e(t) CI: [2,0]",
- "w(t) CI: [0,3]","e(t) CI: [0,3]",
- "w(t) CI: [-2,3]","e(t) CI: [-2,3]",
- "w(t) CI: [2,-3]","e(t) CI: [2,-3]",
- "w(t) CI: [2,2]","e(t) CI: [2,2]",
+ "e(t) CI: [2,0]","w(t) CI: [2,0]",
+ "e(t) CI: [0,3]","w(t) CI: [0,3]",
+ "e(t) CI: [-2,3]","w(t) CI: [-2,3]",
+ "e(t) CI: [2,-3]","w(t) CI: [2,-3]",
+ "e(t) CI: [2,2]","w(t) CI: [2,2]",
  "location","northwest");
 hold off;

@@ -1,34 +1,43 @@
+figure(1)
+hold on ;
+function vecteurs_propres(A, intervalle)
+    # Chaque vecteur propre se trouve dans une ligne de la matrice V.
+    [V,L] = eig(A);
+    eigenvector_2 = (V(2,2)/V(2,1)) * intervalle;
+    plot(intervalle, eigenvector_2,"linewidth",3);
+
+    if L(2, 2) > 0
+        quiver(0, 0, V(2, 1), V(2, 2), "color", "k", "linewidth", 3);
+    else
+        quiver(V(2, 1), V(2, 2), -V(2, 1), -V(2, 2), "color", "k", "linewidth", 2);
+    end
+endfunction
+
+function vecteurs_vitesse(A, intervalle)
+    hold on
+    # On définit une grille de points dont les coordonnées sont dans (x1, x2)
+    [x1,x2] = meshgrid(intervalle);
+    
+    # On calcule le vecteur vitesse pour chaque point de la grille
+    x1_values = A(1,1)*x1 + A(1,2)*x2;
+    x2_values = A(2,1)*x1 + A(2,2)*x2;  
+    
+    # On normalise des valeurs pour la représentation graphique
+    norms=sqrt(x1_values.^2+x2_values.^2);
+    x1_normalized = x1_values ./ norms; # Element-wise division
+    x2_normalized = x2_values ./norms;
+
+    # Et on dessine les vecteurs avec la fonction `quiver`
+    vector_scale = .5;
+    quiver(x1,x2,x1_normalized,x2_normalized, vector_scale);
+endfunction
+
 A = [2 0;3 0];
-[x1,x2] = meshgrid(-1.5:0.1:1.5);
-
-x1_values = A(1,1)*x1+A(1,2)*x2;
-x2_values = A(2,1)*x1+A(2,2)*x2;
-
-norms=sqrt(x1_values.^2+x2_values.^2);
-x1_normalized = x1_values ./ norms;
-x2_normalized = x2_values ./norms;
-
-# Pas d'isoclines, double division par zéro
-line_range = -1.5:.1:1.5;
-
-# Droites invariantes (vecteurs propres) 
-[V,L] = eig(A);
-eigenvector_2 = (V(2,2)/V(1,2)) * line_range;
-# Le 2ième vecteur propre lève une erreur (division par zéro)
-
-# Figure 1: portrait de phase, isoclines et vecteurs propres
-figure(1);
-hold on;
-vector_scale = .5;
-
-quiver(x1,x2,x1_normalized,x2_normalized, vector_scale);
-
-plot(line_range,eigenvector_2,"linewidth",3);
-
-quiver([0,0],[0,0],V(1,2),V(2,2),"linewidth",3,"color","k");
-
-legend("portrait de phase","v_2","location","south");
-hold off;
+line_range =-1.5:0.1:1.5; # On va plot de -1.5 jusqu'à 1.5
+vecteurs_vitesse(A, line_range);
+vecteurs_propres(A, line_range);
+legend("portrait de phase", "v");
+hold off; # Montrer l'image
 
 # Figure 2: trajectoires e(t), w(t) avec 5 conditions initiales
 figure(2);
@@ -49,10 +58,10 @@ plot(t4,x4);
 plot(t5,x5);
 
 legend(
- "e(t) CI: [2,0]","w(t) CI: [2,0]",
- "e(t) CI: [0,3]","w(t) CI: [0,3]",
- "e(t) CI: [-2,3]","w(t) CI: [-2,3]",
- "e(t) CI: [2,-3]","w(t) CI: [2,-3]",
- "e(t) CI: [2,2]","w(t) CI: [2,2]",
+ "w(t) CI: [2,0]","e(t) CI: [2,0]",
+ "w(t) CI: [0,3]","e(t) CI: [0,3]",
+ "w(t) CI: [-2,3]","e(t) CI: [-2,3]",
+ "w(t) CI: [2,-3]","e(t) CI: [2,-3]",
+ "w(t) CI: [2,2]","e(t) CI: [2,2]",
  "location","northwest");
 hold off;
